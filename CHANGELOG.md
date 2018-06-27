@@ -7,7 +7,7 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
-## 3.0.1 - 2018-06-27
+## 3.0.2 - 2018-06-27
 
 ### Added
 

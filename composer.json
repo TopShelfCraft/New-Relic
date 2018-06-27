@@ -1,8 +1,8 @@
 {
     "name": "topshelfcraft/new-relic",
-    "description": "Helps instrument your Craft app with New Relic by setting the app name, transaction name, and other meta info.",
+    "description": "This plugin helps instrument your Craft app with New Relic APM by setting transaction names and (optionally) an App Name on each request.",
     "type": "craft-plugin",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "keywords": [
         "craft",
         "cms",
