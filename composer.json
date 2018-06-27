@@ -1,0 +1,41 @@
+{
+    "name": "topshelfcraft/new-relic",
+    "description": "Helps instrument your Craft app with New Relic by setting the app name, transaction name, and other meta info.",
+    "type": "craft-plugin",
+    "version": "3.0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "new relic"
+    ],
+    "support": {
+        "docs": "https://github.com/TopShelfCraft/New-Relic",
+        "issues": "https://github.com/TopShelfCraft/New-Relic/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Rog",
+            "homepage": "https://topshelfcraft.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "topshelfcraft\\newrelic\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "New Relic",
+        "handle": "new-relic",
+        "schemaVersion": "0.0.0.0",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/topshelfcraft/new-relic/master/CHANGELOG.md",
+        "class": "topshelfcraft\\newrelic\\NewRelic"
+    }
+}

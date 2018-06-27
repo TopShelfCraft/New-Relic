@@ -1,0 +1,11 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'App Name',
+    instructions: '(If you want to specify a different app name than the one provided in your _.ini_ files, do so here.)',
+    id: 'appName',
+    name: 'appName',
+    value: settings['appName']})
+}}
