@@ -5,7 +5,7 @@ _a plugin for Craft CMS 3.x_
 **A [Top Shelf Craft](https://topshelfcraft.com) creation**  
 [Michael Rog](https://michaelrog.com), Proprietor
 
-...because you have all the best words.
+_Instrument your Craft app with [New Relic APM](https://newrelic.com/products/application-monitoring)._
 
 
 * * *
@@ -13,7 +13,7 @@ _a plugin for Craft CMS 3.x_
 
 ## tl:dr
 
-This plugin helps instrument your Craft app with New Relic APM by setting transaction names and (optionally) an App Name on each request.
+This plugin helps connect your Craft app with New Relic APM by setting transaction names and (optionally) an app name on each request.
 
 
 ## Installation
