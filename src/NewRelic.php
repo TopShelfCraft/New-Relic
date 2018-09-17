@@ -48,7 +48,7 @@ class NewRelic extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        if (extension_loaded('newrelic'))
+        if (extension_loaded('newrelic') and !Craft::$app->getRequest()->getIsConsoleRequest())
 		{
 
 			if (!empty($this->getSettings()->appName))
