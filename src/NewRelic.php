@@ -56,32 +56,45 @@ class NewRelic extends Plugin
 				newrelic_set_appname($this->getSettings()->appName);
 			}
 
-			$name = Craft::$app->getRequest()->getSegment(1);
+			$request = Craft::$app->getRequest();
 
-			if (Craft::$app->getRequest()->getSegment(2))
-			{
-				$name .= "/" . Craft::$app->getRequest()->getSegment(2);
-			}
+			if ($request->getIsConsoleRequest()) {
 
-			if (Craft::$app->getRequest()->getIsLivePreview())
-			{
-				$name = "/LivePreview/{$name}";
+				/*
+				 * Console requests have no concept of a URI or segments,
+				 * so we'll name the transaction based on the resolved route.
+				 */
+
+				$route = ($request->resolve())[0];
+				$name = "Console/{$route}";
+
 			}
-			elseif (Craft::$app->getRequest()->getIsCpRequest())
+			else
 			{
-				$name = Craft::$app->getConfig()->getGeneral()->cpTrigger . "/{$name}";
+
+				/*
+				 * We're in a web request, so we can name the transaction based on segments/context.
+				 */
+
+				$name = $request->getSegment(1);
+
+				if ($request->getSegment(2))
+				{
+					$name .= "/" . $request->getSegment(2);
+				}
+
+				if ($request->getIsLivePreview())
+				{
+					$name = "LivePreview/{$name}";
+				}
+				elseif ($request->getIsCpRequest())
+				{
+					$name = Craft::$app->getConfig()->getGeneral()->cpTrigger . "/{$name}";
+				}
+
 			}
 
 			newrelic_name_transaction($name);
-
-//			Craft::info(
-//				Craft::t(
-//					'new-relic',
-//					'New Relic transaction named: {name}',
-//					['name' => $name]
-//				),
-//				'new-relic'
-//			);
 
 		}
 
