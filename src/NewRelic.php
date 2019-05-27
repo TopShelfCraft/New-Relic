@@ -78,16 +78,16 @@ class NewRelic extends Plugin
 
 				$name = $request->getSegment(1);
 
-				if ($request->getSegment(2))
+				$segment2Name = $request->getSegment(2);
+				if ($segment2Name)
 				{
-					if ($this->getSettings()->includeSegment2 === '1')
+					$segment2FixedName = $this->getSettings()->groupSegment2As;
+					if ($segment2FixedName !== '')
 					{
-						$name .= "/" . $request->getSegment(2);
+						$segment2Name = $segment2FixedName;
 					}
-					else
-					{
-						$name .= "/*";
-					}
+
+					$name .= "/" . $segment2Name;
 				}
 
 				if ($request->getIsLivePreview())

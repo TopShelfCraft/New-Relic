@@ -37,7 +37,7 @@ class Settings extends Model
      *
      * @var boolean
      */
-    public $includeSegment2 = '1';
+    public $groupSegment2As = '';
 
     /*
      * Public Methods
@@ -56,8 +56,8 @@ class Settings extends Model
         return [
             ['appName', 'string'],
             ['appName', 'default', 'value' => ''],
-            ['includeSegment2', 'string'],
-            ['includeSegment2', 'default', 'value' => '1'],
+            ['groupSegment2As', 'string'],
+            ['groupSegment2As', 'default', 'value' => ''],
         ];
     }
 
