@@ -26,16 +26,12 @@ class Settings extends Model
 	 */
 
     /**
-     * Some field model attribute
-     *
      * @var string
      */
     public $appName = '';
 
     /**
-     * Some field model attribute
-     *
-     * @var boolean
+     * @var string
      */
     public $groupSegment2As = '';
 

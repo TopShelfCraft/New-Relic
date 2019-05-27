@@ -78,16 +78,21 @@ class NewRelic extends Plugin
 
 				$name = $request->getSegment(1);
 
-				$segment2Name = $request->getSegment(2);
-				if ($segment2Name)
-				{
-					$segment2FixedName = $this->getSettings()->groupSegment2As;
-					if ($segment2FixedName !== '')
-					{
-						$segment2Name = $segment2FixedName;
-					}
+				$segment2 = $request->getSegment(2);
 
-					$name .= "/" . $segment2Name;
+				/*
+				 * Careful... We can't just check emptiness because `null` means no segment found,
+				 * and '0' could be a valid segment.
+				 */
+				if (is_string($segment2) && $segment2 !== '')
+				{
+
+					$segment2 = ($this->getSettings()->groupSegment2As !== '')
+						? $this->getSettings()->groupSegment2As
+						: $segment2;
+
+					$name .= "/" . $segment2;
+
 				}
 
 				if ($request->getIsLivePreview())

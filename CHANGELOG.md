@@ -7,6 +7,13 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.1.0 - 2019-05-27
+
+### Added
+
+- Added optional setting to override Segment 2 in reported paths. (h/t Ibrahim Lawal, [#5](https://github.com/TopShelfCraft/New-Relic/issues/5))
+
+
 ## 3.0.3 - 2018-09-17
 
 ### Added
@@ -16,6 +23,7 @@ This project adheres to [Semantic Versioning](http://semver.org/). Version numbe
 ### Changed
 
 - Removed leading slash from transaction names in Live Preview and Console requests.
+
 
 ## 3.0.2 - 2018-06-27
 

@@ -26,7 +26,7 @@ This plugin helps connect your Craft app with New Relic APM by setting transacti
 
 2. In the Control Panel, go to Settings → Plugins and click the “Install” button for _New Relic_.
 
-3. You can edit settings for the plugin as needed.
+3. Edit the plugin Settings as needed.
 
 _The New Relic plugin is also available for installation via the Craft CMS Plugin Store._
 
