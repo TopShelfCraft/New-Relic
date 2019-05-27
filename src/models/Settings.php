@@ -32,6 +32,12 @@ class Settings extends Model
      */
     public $appName = '';
 
+    /**
+     * Some field model attribute
+     *
+     * @var boolean
+     */
+    public $includeSegment2 = '1';
 
     /*
      * Public Methods
@@ -50,6 +56,8 @@ class Settings extends Model
         return [
             ['appName', 'string'],
             ['appName', 'default', 'value' => ''],
+            ['includeSegment2', 'string'],
+            ['includeSegment2', 'default', 'value' => '1'],
         ];
     }
 

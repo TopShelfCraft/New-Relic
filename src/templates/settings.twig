@@ -9,3 +9,11 @@
     name: 'appName',
     value: settings['appName']})
 }}
+
+{{ forms.textField({
+    label: 'Include Segment 2',
+    instructions: '(If you want all second segments to be replaced with a "*", set this to a value other than "1".)',
+    id: 'includeSegment2',
+    name: 'includeSegment2',
+    value: settings['includeSegment2']})
+}}

@@ -80,7 +80,14 @@ class NewRelic extends Plugin
 
 				if ($request->getSegment(2))
 				{
-					$name .= "/" . $request->getSegment(2);
+					if ($this->getSettings()->includeSegment2 === '1')
+					{
+						$name .= "/" . $request->getSegment(2);
+					}
+					else
+					{
+						$name .= "/*";
+					}
 				}
 
 				if ($request->getIsLivePreview())
