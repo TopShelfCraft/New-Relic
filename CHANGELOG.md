@@ -1,10 +1,24 @@
-# New Relic Changelog
+# New Relic plugin changelog
 
-All notable changes to the New Relic plugin will be documented in this file.
+The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
-The format of this changelog is based on ["Keep a Changelog"](http://keepachangelog.com/).
 
-This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
+## 4.0.0 - 2022-05-15
+
+### Improved
+
+- New Relic is ready for Craft 4!
+- Control panel settings inputs now support environment variables.
+- All route segments are now prefixed with `/` in transaction names. (Improves overall consistency and prevents PHP warnings on the homepage route.) ([#6](https://github.com/TopShelfCraft/New-Relic/issues/6)) 
+
+### Changed
+
+- Fully typed `Settings` properties.
+- Moved `Settings` model to the root namespace.
+
+### Removed
+
+- Removed `NewRelic::$plugin` static accessor; use `getInstance()` instead.
 
 
 ## 3.1.0 - 2019-05-27

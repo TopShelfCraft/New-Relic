@@ -1,54 +1,30 @@
 <?php
-/**
- * New Relic
- *
- * @author     Michael Rog <michael@michaelrog.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2018, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/TopShelfCraft/New-Relic
- */
-
-namespace topshelfcraft\newrelic;
-
-use topshelfcraft\newrelic\models\Settings;
+namespace TopShelfCraft\NewRelic;
 
 use Craft;
-use craft\base\Plugin;
+use TopShelfCraft\base\Plugin;
 
 /**
- * @author    Top Shelf Craft (Michael Rog)
- * @package   NewRelic
- * @since     3.0.0
+ * @author Michael Rog <michael@michaelrog.com>
+ * @link https://topshelfcraft.com
+ * @copyright Copyright 2022, Top Shelf Craft (Michael Rog)
  *
- * @property  Settings $settings
- * @method    Settings getSettings()
+ * @method Settings getSettings()
  */
 class NewRelic extends Plugin
 {
 
-    /*
-     * Static Properties
-     * =========================================================================
-     */
+	public bool $hasCpSection = false;
+	public bool $hasCpSettings = true;
+	public string $schemaVersion = '0.0.0.0';
+	public ?string $changelogUrl = "https://raw.githubusercontent.com/TopShelfCraft/New-Relic/master/CHANGELOG.md";
 
-    /**
-     * @var NewRelic
-     */
-    public static $plugin;
+	public function init()
+	{
 
+		parent::init();
 
-    /*
-     * Public Methods
-     * =========================================================================
-     */
-
-    public function init()
-    {
-
-        parent::init();
-        self::$plugin = $this;
-
-        if (extension_loaded('newrelic'))
+		if (extension_loaded('newrelic'))
 		{
 
 			if (!empty($this->getSettings()->appName))
@@ -58,7 +34,8 @@ class NewRelic extends Plugin
 
 			$request = Craft::$app->getRequest();
 
-			if ($request->getIsConsoleRequest()) {
+			if ($request->getIsConsoleRequest())
+			{
 
 				/*
 				 * Console requests have no concept of a URI or segments,
@@ -76,7 +53,7 @@ class NewRelic extends Plugin
 				 * We're in a web request, so we can name the transaction based on segments/context.
 				 */
 
-				$name = $request->getSegment(1);
+				$name = '/' . $request->getSegment(1);
 
 				$segment2 = $request->getSegment(2);
 
@@ -97,11 +74,11 @@ class NewRelic extends Plugin
 
 				if ($request->getIsLivePreview())
 				{
-					$name = "LivePreview/{$name}";
+					$name = "LivePreview" . $name;
 				}
 				elseif ($request->getIsCpRequest())
 				{
-					$name = Craft::$app->getConfig()->getGeneral()->cpTrigger . "/{$name}";
+					$name = Craft::$app->getConfig()->getGeneral()->cpTrigger . $name;
 				}
 
 			}
@@ -110,38 +87,28 @@ class NewRelic extends Plugin
 
 		}
 
-    }
+	}
 
+	/**
+	 * Creates and returns the model used to store the plugin’s settings.
+	 */
+	protected function createSettingsModel(): Settings
+	{
+		return new Settings();
+	}
 
-    /*
-     * Protected Methods
-     * =========================================================================
-     */
-
-    /**
-     * Creates and returns the model used to store the plugin’s settings.
-     *
-     * @return \craft\base\Model|null
-     */
-    protected function createSettingsModel()
-    {
-        return new Settings();
-    }
-
-    /**
-     * Returns the rendered settings HTML, which will be inserted into the content
-     * block on the settings page.
-     *
-     * @return string The rendered settings HTML
-     */
-    protected function settingsHtml(): string
-    {
-        return Craft::$app->view->renderTemplate(
-            'new-relic/settings',
-            [
-                'settings' => $this->getSettings()
-            ]
-        );
-    }
+	/**
+	 * Returns the rendered settings HTML, which will be inserted into the content
+	 * block on the settings page.
+	 */
+	protected function settingsHtml(): string
+	{
+		return Craft::$app->view->renderTemplate(
+			'new-relic/settings',
+			[
+				'settings' => $this->getSettings()
+			]
+		);
+	}
 
 }

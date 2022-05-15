@@ -2,7 +2,7 @@
     "name": "topshelfcraft/new-relic",
     "description": "This plugin helps instrument your Craft app with New Relic APM by setting transaction names and (optionally) an App Name on each request.",
     "type": "craft-plugin",
-    "version": "3.1.0",
+    "version": "4.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -14,28 +14,25 @@
         "docs": "https://github.com/TopShelfCraft/New-Relic",
         "issues": "https://github.com/TopShelfCraft/New-Relic/issues"
     },
-    "license": "MIT",
+    "license": "proprietary",
     "authors": [
         {
-            "name": "Michael Rog",
+            "name": "Top Shelf Craft (Michael Rog)",
             "homepage": "https://topshelfcraft.com"
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0"
+        "craftcms/cms": "^4.0",
+        "topshelfcraft/base": "^4.0.1"
     },
     "autoload": {
         "psr-4": {
-          "topshelfcraft\\newrelic\\": "src/"
+          "TopShelfCraft\\NewRelic\\": "src/"
         }
     },
     "extra": {
         "name": "New Relic",
         "handle": "new-relic",
-        "schemaVersion": "0.0.0.0",
-        "hasCpSettings": true,
-        "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/topshelfcraft/new-relic/master/CHANGELOG.md",
-        "class": "topshelfcraft\\newrelic\\NewRelic"
+        "class": "TopShelfCraft\\NewRelic\\NewRelic"
     }
 }

@@ -1,19 +1,19 @@
-{# @var craft \craft\web\twig\variables\CraftVariable #}
+{% import '_includes/forms.twig' as forms %}
 
-{% import "_includes/forms" as forms %}
+{{ forms.autosuggestField({
+	label: "App Name",
+	id: 'appName',
+	name: 'appName',
+	value: settings.appName ?? '',
+	instructions: 'If you want to specify a different app name than the one provided in your _.ini_ files, do so here.',
+	suggestEnvVars: true
+}) }}
 
-{{ forms.textField({
-    label: 'App Name',
-    instructions: '(If you want to specify a different app name than the one provided in your _.ini_ files, do so here.)',
-    id: 'appName',
-    name: 'appName',
-    value: settings['appName']})
-}}
-
-{{ forms.textField({
-    label: 'Group Segment 2 As...',
-    instructions: '(If you want to consolidate your reported routes, you can specify a string to override Segment 2 from the path.)',
-    id: 'groupSegment2As',
-    name: 'groupSegment2As',
-    value: settings['groupSegment2As']})
-}}
+{{ forms.autosuggestField({
+	label: "Group Segment 2 As...",
+	id: 'groupSegment2As',
+	name: 'groupSegment2As',
+	value: settings.groupSegment2As ?? '',
+	instructions: 'If you want to consolidate your reported routes, you can specify a string to override Segment 2 from the path.',
+	suggestEnvVars: true
+}) }}
